@@ -27,6 +27,7 @@ export default class SwipeUpDown extends Component{
     };
     this.disablePressToShow = props.disablePressToShow;
     this.SWIPE_HEIGHT = props.swipeHeight || 60;
+    this.heightFull = props.heightFull || 60;
     this._panResponder = null;
     this.top = this.SWIPE_HEIGHT;
     this.height = this.SWIPE_HEIGHT;
@@ -113,8 +114,8 @@ export default class SwipeUpDown extends Component{
 
   showFull() {
     const { onShowFull } = this.props;
-    this.customStyle.style.top = 0;
-    this.customStyle.style.height = DEVICE_HEIGHT;
+    this.customStyle.style.top = DEVICE_HEIGHT-this.heightFull;
+    this.customStyle.style.height = this.heightFull;
     this.swipeIconRef &&
       this.swipeIconRef.setState({ icon: images.arrow_down, showIcon: true });
     this.updateNativeProps();
